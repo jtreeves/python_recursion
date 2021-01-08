@@ -1,5 +1,12 @@
+from functools import lru_cache
+
+@lru_cache(maxsize = 100)
 def fibonacci(n):
-    if n == 1:
+    if type(n) != int:
+        raise TypeError('Input must be a positive integer')
+    elif n < 1:
+        raise ValueError('Input must be a positive integer')
+    elif n == 1:
         return 1
     elif n == 2:
         return 2
@@ -9,6 +16,8 @@ def fibonacci(n):
 print(fibonacci(3))
 print(fibonacci(4))
 print(fibonacci(5))
+print(fibonacci(-3))
+print(fibonacci('3'))
 
 fib_cache = {}
 def fibonacci_check(n):
