@@ -9,3 +9,18 @@ def fibonacci(n):
 print(fibonacci(3))
 print(fibonacci(4))
 print(fibonacci(5))
+
+fib_cache = {}
+def fibonacci_check(n):
+    if n in fib_cache:
+        return fib_cache[n]
+    if n == 1:
+        value = 1
+    elif n == 2:
+        value = 1
+    elif n > 2:
+        value = fibonacci_check(n - 1) + fibonacci_check(n - 2)
+    fib_cache[n] = value
+    return value
+
+print(fibonacci_check(50))
